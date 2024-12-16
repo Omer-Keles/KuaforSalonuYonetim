@@ -1,7 +1,17 @@
+using KuaforSalonuYonetim.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var connStr = "Server=(localdb)\\mssqllocaldb;Database=EFCORECRUD;Trusted_Connection=True;";
+
+builder.Services.AddDbContext<KuaforContext>(
+
+    options => options.UseSqlServer(connStr)
+    
+);
 
 var app = builder.Build();
 
