@@ -9,7 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="042f8d87-684e-475d-99a3-ffc9d33a209c" name="Changes" comment="" />
+    <list default="true" id="042f8d87-684e-475d-99a3-ffc9d33a209c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.KuaforSalonuYonetim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KuaforSalonuYonetim/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KuaforSalonuYonetim.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/KuaforSalonuYonetim.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +36,10 @@
     &quot;accountId&quot;: &quot;b5ba6d11-4183-4a6a-b296-46b45091d4ff&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/omerk/RiderProjects/KuaforSalonuYonetim/Program.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -39,17 +49,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.KuaforSalonuYonetim: IIS Express.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.KuaforSalonuYonetim: IIS Express">
     <configuration name="KuaforSalonuYonetim: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/KuaforSalonuYonetim.csproj" />
@@ -106,14 +118,39 @@
       <option name="presentableId" value="Default" />
       <updated>1734370883299</updated>
       <workItem from="1734370885339" duration="3308000" />
+      <workItem from="1734381179801" duration="434000" />
+      <workItem from="1734467007973" duration="328000" />
     </task>
+    <task id="LOCAL-00001" summary="Models ve Migrations klsörlerine yeni dosyalar eklenerek veritabanı çalışmalarına başlandı">
+      <option name="closed" value="true" />
+      <created>1734381458117</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1734381458117</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Models ve Migrations klsörlerine yeni dosyalar eklenerek veritabanı çalışmalarına başlandı" />
+    <option name="LAST_COMMIT_MESSAGE" value="Models ve Migrations klsörlerine yeni dosyalar eklenerek veritabanı çalışmalarına başlandı" />
   </component>
 </project>

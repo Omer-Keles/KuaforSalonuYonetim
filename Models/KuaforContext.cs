@@ -1,4 +1,6 @@
-﻿namespace KuaforSalonuYonetim.Models;
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace KuaforSalonuYonetim.Models;
 
 public class KuaforContext:DbContext
 {

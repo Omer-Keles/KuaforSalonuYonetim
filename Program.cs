@@ -1,4 +1,5 @@
 using KuaforSalonuYonetim.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
