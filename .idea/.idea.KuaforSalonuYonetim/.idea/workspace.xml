@@ -9,17 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="042f8d87-684e-475d-99a3-ffc9d33a209c" name="Changes" comment="">
+    <list default="true" id="042f8d87-684e-475d-99a3-ffc9d33a209c" name="Changes" comment="Veritabanı için gerekli bağlantılar. Header ve footer için yeni tasarım.">
+      <change afterPath="$PROJECT_DIR$/Models/Kullanici.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KuaforSalonuYonetim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KuaforSalonuYonetim/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KuaforSalonuYonetim.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/KuaforSalonuYonetim.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="autoShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,9 +38,12 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/omerk/RiderProjects/KuaforSalonuYonetim/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/omerk/RiderProjects/KuaforSalonuYonetim/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="SWEA" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -119,7 +123,7 @@
       <updated>1734370883299</updated>
       <workItem from="1734370885339" duration="3308000" />
       <workItem from="1734381179801" duration="434000" />
-      <workItem from="1734467007973" duration="328000" />
+      <workItem from="1734467007973" duration="2047000" />
     </task>
     <task id="LOCAL-00001" summary="Models ve Migrations klsörlerine yeni dosyalar eklenerek veritabanı çalışmalarına başlandı">
       <option name="closed" value="true" />
@@ -129,7 +133,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734381458117</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Veritabanı için gerekli bağlantılar. Header ve footer için yeni tasarım.">
+      <option name="closed" value="true" />
+      <created>1734467614806</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1734467614806</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,6 +163,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Models ve Migrations klsörlerine yeni dosyalar eklenerek veritabanı çalışmalarına başlandı" />
-    <option name="LAST_COMMIT_MESSAGE" value="Models ve Migrations klsörlerine yeni dosyalar eklenerek veritabanı çalışmalarına başlandı" />
+    <MESSAGE value="Veritabanı için gerekli bağlantılar. Header ve footer için yeni tasarım." />
+    <option name="LAST_COMMIT_MESSAGE" value="Veritabanı için gerekli bağlantılar. Header ve footer için yeni tasarım." />
   </component>
 </project>
