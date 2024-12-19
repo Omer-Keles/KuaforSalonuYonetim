@@ -1,0 +1,22 @@
+﻿@model KuaforSalonuYonetim.Models.Kullanici
+
+@{
+    ViewData["Title"] = "Profil";
+}
+
+<div class="container my-5">
+    <h2>Profil Bilgileriniz</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Ad: @Model.Kullanici_Adi</h4>
+            <h4>Ad: @Model.Kullanici_Soyad</h4>
+            <h4>Email: @Model.Kullanici_Email</h4>
+            <h4>Numara: @Model.Kullanici_Telefon</h4>
+            <!-- Diğer profil bilgileri eklenebilir -->
+        </div>
+    </div>
+    
+    <form method="post" action="@Url.Action("Logout", "Auth")">
+        <button type="submit" class="btn btn-danger">Çıkış Yap</button>
+    </form>
+</div>

@@ -9,10 +9,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="042f8d87-684e-475d-99a3-ffc9d33a209c" name="Changes" comment="Veritabanı için gerekli bağlantılar. Header ve footer için yeni tasarım.">
-      <change afterPath="$PROJECT_DIR$/Models/Kullanici.cs" afterDir="false" />
+    <list default="true" id="042f8d87-684e-475d-99a3-ffc9d33a209c" name="Changes" comment="Log in ve sign up işlemleri için gerekli tabloların modelleri oluşturuldu.">
+      <change afterPath="$PROJECT_DIR$/Controllers/AuthController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Auth/Login.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Auth/Profil.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Auth/SignUp.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KuaforSalonuYonetim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KuaforSalonuYonetim/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KuaforSalonuYonetim.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/KuaforSalonuYonetim.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/KuaforContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Appointment.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Employee.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/KuaforContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/KuaforContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Kullanici.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Kullanici.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +54,7 @@
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="SWEA" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -63,7 +75,13 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "RiderNuGetOptionsPageId",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlserver.localdb"
+    ]
   }
 }]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.KuaforSalonuYonetim: IIS Express">
@@ -123,7 +141,7 @@
       <updated>1734370883299</updated>
       <workItem from="1734370885339" duration="3308000" />
       <workItem from="1734381179801" duration="434000" />
-      <workItem from="1734467007973" duration="2047000" />
+      <workItem from="1734467007973" duration="13979000" />
     </task>
     <task id="LOCAL-00001" summary="Models ve Migrations klsörlerine yeni dosyalar eklenerek veritabanı çalışmalarına başlandı">
       <option name="closed" value="true" />
@@ -141,7 +159,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734467614806</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Log in ve sign up işlemleri için gerekli tabloların modelleri oluşturuldu.">
+      <option name="closed" value="true" />
+      <created>1734555342300</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1734555342300</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +190,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Models ve Migrations klsörlerine yeni dosyalar eklenerek veritabanı çalışmalarına başlandı" />
     <MESSAGE value="Veritabanı için gerekli bağlantılar. Header ve footer için yeni tasarım." />
-    <option name="LAST_COMMIT_MESSAGE" value="Veritabanı için gerekli bağlantılar. Header ve footer için yeni tasarım." />
+    <MESSAGE value="Log in ve sign up işlemleri için gerekli tabloların modelleri oluşturuldu." />
+    <option name="LAST_COMMIT_MESSAGE" value="Log in ve sign up işlemleri için gerekli tabloların modelleri oluşturuldu." />
   </component>
 </project>

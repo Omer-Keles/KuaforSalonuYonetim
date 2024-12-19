@@ -6,13 +6,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var connStr = "Server=(localdb)\\mssqllocaldb;Database=EFCORECRUD;Trusted_Connection=True;";
+builder.Services.AddDbContext<KuaforContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddDbContext<KuaforContext>(
-
-    options => options.UseSqlServer(connStr)
-    
-);
+// Session hizmetini ekliyoruz
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);  // Session süresi
+    options.Cookie.IsEssential = true;  // Cookie'nin zorunlu olduğunu belirtiyoruz
+});
 
 var app = builder.Build();
 
@@ -24,8 +26,12 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+// Use session middleware
+app.UseSession();
 
 app.UseRouting();
 

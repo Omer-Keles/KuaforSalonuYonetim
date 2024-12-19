@@ -15,6 +15,8 @@ namespace KuaforSalonuYonetim.Controllers
 
         public IActionResult Index()
         {
+            // Kullanıcı oturumu açmış mı kontrol et
+            ViewData["KullaniciEmail"] = HttpContext.Session.GetString("Kullanici_Email");
             return View();
         }
 
