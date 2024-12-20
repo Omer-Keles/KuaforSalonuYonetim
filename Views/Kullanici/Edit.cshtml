@@ -1,0 +1,56 @@
+﻿@model KuaforSalonuYonetim.Models.Kullanici
+
+@{
+ViewData["Title"] = "Profil Düzenleme";
+}
+
+<!-- Container başlatılıyor -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <div class="card shadow-lg p-4 rounded">
+                <h2 class="text-center mb-4" style="color: #5A5A5A;">Profilinizi Düzenleyin</h2>
+
+                <!-- Form Başlıyor -->
+                <form method="post" asp-action="Update">
+                    
+
+                    <!-- Ad alanı -->
+                    <div class="form-group mb-3">
+                        <label for="Kullanici_Adi" class="font-weight-bold">Ad</label>
+                        <input type="text" class="form-control" id="Kullanici_Adi" name="Kullanici_Adi" value="@Model.Kullanici_Adi" />
+                    </div>
+
+                    <!-- Soyad alanı -->
+                    <div class="form-group mb-3">
+                        <label for="Kullanici_Soyad" class="font-weight-bold">Soyad</label>
+                        <input type="text" class="form-control" id="Kullanici_Soyad" name="Kullanici_Soyad" value="@Model.Kullanici_Soyad" />
+                    </div>
+
+                    <!-- Telefon alanı -->
+                    <div class="form-group mb-3">
+                        <label for="Kullanici_Telefon" class="font-weight-bold">Telefon</label>
+                        <input type="text" class="form-control" id="Kullanici_Telefon" name="Kullanici_Telefon" value="@Model.Kullanici_Telefon" />
+                    </div>
+
+                    <!-- E-posta alanı -->
+                    <div class="form-group mb-3">
+                        <label for="Kullanici_Email" class="font-weight-bold">E-posta</label>
+                        <input type="email" class="form-control" id="Kullanici_Email" name="Kullanici_Email" value="@Model.Kullanici_Email" />
+                    </div>
+
+                    <!-- Parola alanı -->
+                    <div class="form-group mb-4">
+                        <label for="Kullanici_Parola" class="font-weight-bold">Yeni Parola (Opsiyonel)</label>
+                        <input type="password" class="form-control" id="Kullanici_Parola" name="Kullanici_Parola" />
+                    </div>
+
+                    <!-- Güncelle butonu -->
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary btn-block py-2" style="font-size: 16px; font-weight: bold;">Güncelle</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

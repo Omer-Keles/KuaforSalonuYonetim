@@ -9,22 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="042f8d87-684e-475d-99a3-ffc9d33a209c" name="Changes" comment="Log in ve sign up işlemleri için gerekli tabloların modelleri oluşturuldu.">
-      <change afterPath="$PROJECT_DIR$/Controllers/AuthController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/Auth/Login.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/Auth/Profil.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/Auth/SignUp.cshtml" afterDir="false" />
+    <list default="true" id="042f8d87-684e-475d-99a3-ffc9d33a209c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Views/Kullanici/Edit.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KuaforSalonuYonetim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KuaforSalonuYonetim/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/KullaniciController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KuaforSalonuYonetim.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/KuaforSalonuYonetim.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/KuaforContextModelSnapshot.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Appointment.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Employee.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/KuaforContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/KuaforContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Kullanici.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Kullanici.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Auth/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Kullanici/Login.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Auth/Profil.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Kullanici/Profil.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Auth/SignUp.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Kullanici/SignUp.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/site.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,25 +60,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.KuaforSalonuYonetim: IIS Express.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "RiderNuGetOptionsPageId",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.KuaforSalonuYonetim: IIS Express.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;RiderNuGetOptionsPageId&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "sqlserver.localdb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlserver.localdb&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.KuaforSalonuYonetim: IIS Express">
     <configuration name="KuaforSalonuYonetim: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/KuaforSalonuYonetim.csproj" />
@@ -141,7 +136,9 @@
       <updated>1734370883299</updated>
       <workItem from="1734370885339" duration="3308000" />
       <workItem from="1734381179801" duration="434000" />
-      <workItem from="1734467007973" duration="13979000" />
+      <workItem from="1734467007973" duration="14355000" />
+      <workItem from="1734707705690" duration="6911000" />
+      <workItem from="1734720137190" duration="2869000" />
     </task>
     <task id="LOCAL-00001" summary="Models ve Migrations klsörlerine yeni dosyalar eklenerek veritabanı çalışmalarına başlandı">
       <option name="closed" value="true" />
@@ -167,7 +164,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734555342300</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Giriş ve kayıt işlemleri başarıyla yapılıyor.Login ve sign up sayfaları güncellendi.">
+      <option name="closed" value="true" />
+      <created>1734640045386</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1734640045386</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,6 +196,7 @@
     <MESSAGE value="Models ve Migrations klsörlerine yeni dosyalar eklenerek veritabanı çalışmalarına başlandı" />
     <MESSAGE value="Veritabanı için gerekli bağlantılar. Header ve footer için yeni tasarım." />
     <MESSAGE value="Log in ve sign up işlemleri için gerekli tabloların modelleri oluşturuldu." />
-    <option name="LAST_COMMIT_MESSAGE" value="Log in ve sign up işlemleri için gerekli tabloların modelleri oluşturuldu." />
+    <MESSAGE value="Giriş ve kayıt işlemleri başarıyla yapılıyor.Login ve sign up sayfaları güncellendi." />
+    <option name="LAST_COMMIT_MESSAGE" value="Giriş ve kayıt işlemleri başarıyla yapılıyor.Login ve sign up sayfaları güncellendi." />
   </component>
 </project>

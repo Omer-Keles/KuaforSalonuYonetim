@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="~/KuaforSalonuYonetim.site.css" asp-append-version="true" />
 </head>
 <body>
-<!-- Navbar Start -->
+
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-secondary navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
     <a class="navbar-brand ms-4 ms-lg-0" asp-controller="Home" asp-action="Index">
@@ -31,32 +31,27 @@
             <a class="nav-item nav-link active" asp-controller="Home" asp-action="Index">Home</a>
             <a class="nav-item nav-link" asp-controller="Home" asp-action="About">About</a>
             <a class="nav-item nav-link" asp-controller="Home" asp-action="Service">Service</a>
+            <a class="nav-item nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
+            <!-- Eğer kullanıcı giriş yaptıysa "Hesabım" butonu, yapmadıysa "Log In" görünsün -->
+            @if (ViewData["KullaniciEmail"] != null)
+            {
             <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Pages</a>
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">@ViewData["KullaniciAdi"]</a>
                 <div class="dropdown-menu m-0">
-                    <a class="dropdown-item" asp-controller="Home" asp-action="Pricing">Pricing Plan</a>
-                    <a class="dropdown-item" asp-controller="Home" asp-action="Team">Our Barber</a>
-                    <a class="dropdown-item" asp-controller="Home" asp-action="WorkingHours">Working Hours</a>
-                    <a class="dropdown-item" asp-controller="Home" asp-action="Testimonial">Testimonial</a>
-                    <a class="dropdown-item" asp-controller="Home" asp-action="Error404">404 Page</a>
+                    <a class="dropdown-item" asp-controller="Kullanici" asp-action="Profil">Kullanıcı Bilgileri</a>
+                    <a class="dropdown-item" asp-controller="Randevu" asp-action="RandevuBilgi">Randevularım</a>
+                    <a class="dropdown-item" asp-controller="Kullanici" asp-action="Logout">Çıkış Yap</a>
                 </div>
             </div>
-            <a class="nav-item nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
+            }
         </div>
-
-        <!-- Eğer kullanıcı giriş yaptıysa "Hesabım" butonu, yapmadıysa "Log In" görünsün -->
-        @if (ViewData["KullaniciEmail"] != null)
+        
+        @if (ViewData["KullaniciEmail"] == null)
         {
-        <a class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block" asp-controller="Auth" asp-action="Profil">Hesabım</a>
-        }
-        else
-        {
-        <a class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block" asp-controller="Auth" asp-action="Login">Log In / Sign Up</a>
+            <a class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block" asp-controller="Kullanici" asp-action="Login">Log In / Sign Up</a>
         }
     </div>
 </nav>
-<!-- Navbar End -->
-
 <!-- Navbar End -->
 
 <div class="container">

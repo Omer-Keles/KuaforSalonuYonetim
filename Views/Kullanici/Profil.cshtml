@@ -1,0 +1,36 @@
+﻿@model KuaforSalonuYonetim.Models.Kullanici
+
+@{
+ViewData["Title"] = "Profil";
+}
+
+<div class="container my-5">
+    <h2 class="text-center">Profil Bilgileriniz</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Profil Bilgileri -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Ad:</strong></label>
+                        <p>@Model.Kullanici_Adi</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Soyad:</strong></label>
+                        <p>@Model.Kullanici_Soyad</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Email:</strong></label>
+                        <p>@Model.Kullanici_Email</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Telefon:</strong></label>
+                        <p>@Model.Kullanici_Telefon</p>
+                    </div>
+                    <!-- Düzenleme butonu -->
+                    <a href="@Url.Action("Edit", "Kullanici")" class="btn btn-primary">Bilgileri Düzenle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

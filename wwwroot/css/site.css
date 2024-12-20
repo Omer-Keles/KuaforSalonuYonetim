@@ -34,30 +34,7 @@
   justify-content: center;
   font-weight: normal;
 }
-/*
-html {
-  font-size: 14px;
-}
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
-}
-*/
 /*** Navbar ***/
 .navbar .dropdown-toggle::after {
   border: none;
@@ -110,6 +87,7 @@ body {
   .navbar .nav-item .dropdown-menu {
     display: block;
     border: none;
+    background-color: #6c757d;
     margin-top: 0;
     top: 150%;
     opacity: 0;
@@ -124,6 +102,8 @@ body {
     opacity: 1;
   }
 }
+
+
 /*** Footer ***/
 .footer .btn.btn-link {
   display: block;
