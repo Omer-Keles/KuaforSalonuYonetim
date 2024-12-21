@@ -9,16 +9,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="042f8d87-684e-475d-99a3-ffc9d33a209c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Views/Kullanici/Edit.cshtml" afterDir="false" />
+    <list default="true" id="042f8d87-684e-475d-99a3-ffc9d33a209c" name="Changes" comment="Kullanıcının bilgilerini görmesi ve güncellemesi sağlandı.">
+      <change afterPath="$PROJECT_DIR$/Models/CalismaSaatleri.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/Salon.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Home/Islemler.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/img/carousel-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/img/carousel-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/img/open.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/lib/animate/animate.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wwwroot/lib/owlcarousel/owl.carousel.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KuaforSalonuYonetim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KuaforSalonuYonetim/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/KullaniciController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Auth/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Kullanici/Login.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Auth/Profil.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Kullanici/Profil.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Auth/SignUp.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Kullanici/SignUp.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/KuaforContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/KuaforContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Kullanici.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Kullanici.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Home/Privacy.cshtml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/site.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -138,7 +145,7 @@
       <workItem from="1734381179801" duration="434000" />
       <workItem from="1734467007973" duration="14355000" />
       <workItem from="1734707705690" duration="6911000" />
-      <workItem from="1734720137190" duration="2869000" />
+      <workItem from="1734720137190" duration="21004000" />
     </task>
     <task id="LOCAL-00001" summary="Models ve Migrations klsörlerine yeni dosyalar eklenerek veritabanı çalışmalarına başlandı">
       <option name="closed" value="true" />
@@ -172,7 +179,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734640045386</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Kullanıcının bilgilerini görmesi ve güncellemesi sağlandı.">
+      <option name="closed" value="true" />
+      <created>1734726135463</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1734726135463</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,6 +212,7 @@
     <MESSAGE value="Veritabanı için gerekli bağlantılar. Header ve footer için yeni tasarım." />
     <MESSAGE value="Log in ve sign up işlemleri için gerekli tabloların modelleri oluşturuldu." />
     <MESSAGE value="Giriş ve kayıt işlemleri başarıyla yapılıyor.Login ve sign up sayfaları güncellendi." />
-    <option name="LAST_COMMIT_MESSAGE" value="Giriş ve kayıt işlemleri başarıyla yapılıyor.Login ve sign up sayfaları güncellendi." />
+    <MESSAGE value="Kullanıcının bilgilerini görmesi ve güncellemesi sağlandı." />
+    <option name="LAST_COMMIT_MESSAGE" value="Kullanıcının bilgilerini görmesi ve güncellemesi sağlandı." />
   </component>
 </project>
