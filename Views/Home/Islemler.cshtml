@@ -34,3 +34,34 @@
         </div>
     </div>
 </div>
+
+@model List<KuaforSalonuYonetim.Models.Islem>
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+            <p class="d-inline-block bg-secondary text-primary py-1 px-4">Hizmetlerimiz</p>
+            <h1 class="text-uppercase">Neler Sunuyoruz</h1>
+        </div>
+        <div class="row g-4">
+            @foreach (var islem in Model)
+            {
+            <div class="col-lg-4 col-md-6">
+                <div class="service-item position-relative overflow-hidden bg-secondary d-flex h-100 p-5 ps-0">
+                    <div class="bg-dark d-flex flex-shrink-0 align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                        <img class="img-fluid" src="~/img/beard-trim.png" alt="@islem.IslemAdi">
+                    </div>
+                    <div class="ps-4">
+                        <h3 class="text-uppercase mb-3">@islem.IslemAdi</h3>
+                        <p>@islem.IslemAciklama</p>
+                        <span class="text-uppercase text-primary">₺@islem.Ucret</span>
+                        <p>Süre: @islem.Sure dakika</p>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+
+

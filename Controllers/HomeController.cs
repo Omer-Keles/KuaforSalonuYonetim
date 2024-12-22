@@ -1,6 +1,7 @@
 using KuaforSalonuYonetim.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 
 namespace KuaforSalonuYonetim.Controllers
 {
@@ -53,11 +54,15 @@ namespace KuaforSalonuYonetim.Controllers
                 .Where(c => c.SalonId == salon.SalonId)
                 .OrderBy(c => c.CalismaSaatleriId) // ID'ye göre sıralama
                 .ToList();
+            // Veritabanından işlemleri al
+            var islemler = _context.Islemler.ToList();
+
+            // View'a gönder
 
             // Salon ve çalışma saatlerini View'a gönderiyoruz
             ViewData["Salon"] = salon;
             ViewData["CalismaSaatleri"] = calismaSaatleri;
-            return View();
+            return View(islemler);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
