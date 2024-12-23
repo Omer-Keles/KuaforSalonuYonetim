@@ -7,8 +7,11 @@ public class KuaforContext : DbContext
     public DbSet<Kullanici> Kullanicilar { get; set; }
     public DbSet<Salon> Salonlar { get; set; }
     public DbSet<CalismaSaatleri> CalismaSaatleri { get; set; }
-
     public DbSet<Islem> Islemler { get; set; }
+    public DbSet<Randevu> Randevular { get; set; }
+    public DbSet<Calisan> Calisanlar { get; set; }
+    public DbSet<CalisanIslem> CalisanIslemler { get; set; }
+    public DbSet<CalisanUygunSaat> CalisanUygunSaatler { get; set; }
 
     public KuaforContext(DbContextOptions<KuaforContext> options) : base(options)
     {
@@ -51,6 +54,7 @@ public class KuaforContext : DbContext
             }
         );
 
+        // Varsayılan İşlem Verisi
         modelBuilder.Entity<Islem>().HasData(
             new Islem
             {
@@ -63,7 +67,7 @@ public class KuaforContext : DbContext
             {
                 IslemId = 2, IslemAdi = "Sakal Kesim",
                 IslemAciklama =
-                    "Ustura veya makineyle sakal ve bıyık kesimi yapılır.İsteğe göre sakal şekillendirilir ve bıyık düzeltilir",
+                    "Ustura veya makineyle sakal ve bıyık kesimi yapılır. İsteğe göre sakal şekillendirilir ve bıyık düzeltilir.",
                 Sure = 30, Ucret = 100
             },
             new Islem
@@ -79,5 +83,46 @@ public class KuaforContext : DbContext
                 Ucret = 500
             }
         );
+
+        // Varsayılan Çalışan Verisi
+        modelBuilder.Entity<Calisan>().HasData(
+            new Calisan
+            {
+                CalisanId = 1,
+                CalisanAdi = "Ahmet",
+                CalisanSoyadi = "Yılmaz",
+                Telefon = "05551112233"
+            },
+            new Calisan
+            {
+                CalisanId = 2,
+                CalisanAdi = "Mehmet",
+                CalisanSoyadi = "Demir",
+                Telefon = "05552223344"
+            }
+        );
+
+        // Varsayılan Çalışan İşlem Verisi
+        modelBuilder.Entity<CalisanIslem>().HasData(
+            new CalisanIslem { Id = 1, CalisanId = 1, IslemId = 1 }, // Ahmet - Saç Kesim
+            new CalisanIslem { Id = 2, CalisanId = 1, IslemId = 2 }, // Ahmet - Sakal Kesim
+            new CalisanIslem { Id = 3, CalisanId = 2, IslemId = 3 }, // Mehmet - Saç ve Sakal Bakım
+            new CalisanIslem { Id = 4, CalisanId = 2, IslemId = 4 }  // Mehmet - Saç Boyama
+        );
+
+        // Varsayılan Çalışan Uygun Saat Verisi
+        modelBuilder.Entity<CalisanUygunSaat>().HasData(
+            new CalisanUygunSaat { Id = 1, CalisanId = 1, Gun = "Pazartesi", BaslangicSaati = new TimeSpan(9, 0, 0), BitisSaati = new TimeSpan(18, 0, 0) },
+            new CalisanUygunSaat { Id = 2, CalisanId = 2, Gun = "Salı", BaslangicSaati = new TimeSpan(10, 0, 0), BitisSaati = new TimeSpan(19, 0, 0) }
+        );
+        modelBuilder.Entity<CalisanIslem>()
+            .HasOne(ci => ci.Calisan)
+            .WithMany(c => c.CalisanIslemler)
+            .HasForeignKey(ci => ci.CalisanId);
+
+        modelBuilder.Entity<CalisanIslem>()
+            .HasOne(ci => ci.Islem)
+            .WithMany()
+            .HasForeignKey(ci => ci.IslemId);
     }
 }

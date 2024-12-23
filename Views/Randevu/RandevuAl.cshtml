@@ -1,0 +1,274 @@
+﻿@model KuaforSalonuYonetim.Models.ViewModels.RandevuAlViewModel
+
+@{
+ViewData["Title"] = "Randevu Al";
+}
+
+<!-- Ana container -->
+<div class="container my-5" style="max-width: 700px;">
+    <!-- Kart görünümü -->
+    <div class="card shadow">
+
+        <!-- Kart başlık alanı (arka plan ve yazı rengi) -->
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Randevu Al</h2>
+        </div>
+
+        <!-- Kart gövdesi -->
+        <div class="card-body">
+
+            <!-- Model Validation Hataları -->
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <!-- Formumuz, ek Bootstrap sınıflarıyla -->
+            <form asp-action="RandevuAl" method="post">
+
+                <!-- Çalışan Dropdown -->
+                <div class="form-group mb-3">
+                    <label asp-for="CalisanId" class="form-label">Çalışan Seçiniz</label>
+                    <select asp-for="CalisanId" class="form-select" id="ddlCalisan">
+                        <option value="">--- Çalışan Seçiniz ---</option>
+                        @if (Model.Calisanlar != null)
+                        {
+                        foreach (var c in Model.Calisanlar)
+                        {
+                        <option value="@c.CalisanId">@($"{c.CalisanAdi} {c.CalisanSoyadi}")</option>
+                        }
+                        }
+                    </select>
+                    <span asp-validation-for="CalisanId" class="text-danger"></span>
+                </div>
+
+                <!-- İşlem Dropdown -->
+                <div class="form-group mb-3">
+                    <label asp-for="IslemId" class="form-label">İşlem Seçiniz</label>
+                    <select asp-for="IslemId" class="form-select" id="ddlIslem">
+                        <option value="">--- İşlem Seçiniz ---</option>
+                        @if (Model.Islemler != null)
+                        {
+                        foreach (var i in Model.Islemler)
+                        {
+                        <option value="@i.IslemId">@i.IslemAdi</option>
+                        }
+                        }
+                    </select>
+                    <span asp-validation-for="IslemId" class="text-danger"></span>
+                </div>
+
+                <!-- Tarih -->
+                <div class="form-group mb-3">
+                    <label asp-for="RandevuTarihi" class="form-label">Randevu Tarihi</label>
+                    <input asp-for="RandevuTarihi" type="date" class="form-control"
+                           id="inpTarih"
+                           min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                    <span asp-validation-for="RandevuTarihi" class="text-danger"></span>
+                </div>
+
+                <!-- Başlangıç Saati -->
+                <div class="form-group mb-3">
+                    <label asp-for="BaslangicSaati" class="form-label">Başlangıç Saati</label>
+                    <select asp-for="BaslangicSaati" class="form-select" id="ddlSaat">
+                        <option value="">--- Saat Seçiniz ---</option>
+                    </select>
+                    <span asp-validation-for="BaslangicSaati" class="text-danger"></span>
+                </div>
+
+                <!-- Bitiş Saati (readonly) -->
+                <div class="form-group mb-3" style="display:none">
+                    <label asp-for="BitisSaati" class="form-label">Bitiş Saati</label>
+                    <input asp-for="BitisSaati" class="form-control" id="inpBitisSaati" readonly />
+                    <span asp-validation-for="BitisSaati" class="text-danger"></span>
+                </div>
+
+                <!-- Ücret (readonly) -->
+                <div class="form-group mb-4">
+                    <label asp-for="Ucret" class="form-label">Ücret</label>
+                    <input asp-for="Ucret" class="form-control" id="inpUcret" readonly />
+                    <span asp-validation-for="Ucret" class="text-danger"></span>
+                </div>
+
+                <!-- Buton -->
+                <button type="submit" class="btn btn-success px-4">
+                    Randevu Oluştur
+                </button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    let secilenIslemSure = 0;
+
+    // ---------------------------------------------------
+    // A) Çalışan seçildi => İşlem filtre + resetDateAndTime
+    // ---------------------------------------------------
+    $("#ddlCalisan").change(function () {
+        let calisanId = $(this).val();
+        let selectedIslemId = $("#ddlIslem").val();
+
+        resetDateAndTime();
+
+        if (calisanId) {
+            $.getJSON('@Url.Action("GetIslemlerByCalisan", "Randevu")',
+                { calisanId: calisanId },
+                function (islemler) {
+                    fillIslemDropdown(islemler, selectedIslemId);
+                });
+        } else {
+            $.getJSON('@Url.Action("GetAllIslemler", "Randevu")',
+                function (islemler) {
+                    fillIslemDropdown(islemler, selectedIslemId);
+                });
+        }
+    });
+
+    // ---------------------------------------------------
+    // B) İşlem seçildi => Çalışan filtre + Ücret + resetDateAndTime
+    // ---------------------------------------------------
+    $("#ddlIslem").change(function () {
+        let islemId = $(this).val();
+        let selectedCalisanId = $("#ddlCalisan").val();
+
+        resetDateAndTime();
+
+        if (islemId) {
+            $.getJSON('@Url.Action("GetCalisanlarByIslem", "Randevu")',
+                { islemId: islemId },
+                function (calisanlar) {
+                    fillCalisanDropdown(calisanlar, selectedCalisanId);
+                });
+
+            $.getJSON('@Url.Action("GetIslemUcret", "Randevu")',
+                { islemId: islemId },
+                function (data) {
+                    $("#inpUcret").val(data.ucret);
+                    secilenIslemSure = data.sure;
+                    hesaplaBitisSaati();
+                });
+        } else {
+            $.getJSON('@Url.Action("GetAllCalisanlar", "Randevu")',
+                function (calisanlar) {
+                    fillCalisanDropdown(calisanlar, selectedCalisanId);
+                });
+            $("#inpUcret").val("");
+            secilenIslemSure = 0;
+        }
+    });
+
+    // ---------------------------------------------------
+    // C) Tarih seçildi => Müsait saatleri çek
+    // ---------------------------------------------------
+    $("#inpTarih").change(function () {
+        guncelleSaatDropdown();
+    });
+
+    // ---------------------------------------------------
+    // D) Saat seçildi => Bitiş saati hesapla
+    // ---------------------------------------------------
+    $("#ddlSaat").change(function () {
+        hesaplaBitisSaati();
+    });
+
+    // ---------------------------------------------------
+    // Yardımcı Fonksiyonlar (BİREBİR ESKİ HÂLİ)
+    // ---------------------------------------------------
+
+    function fillIslemDropdown(islemler, eskiSelectedIslemId) {
+        let ddl = $("#ddlIslem");
+        ddl.empty();
+        ddl.append('<option value="">--- İşlem Seçiniz ---</option>');
+
+        let islemStillValid = false;
+        $.each(islemler, function (index, i) {
+            let opt = $('<option></option>').val(i.islemId).text(i.islemAdi);
+
+            if (i.islemId == eskiSelectedIslemId) {
+                opt.prop("selected", true);
+                islemStillValid = true;
+            }
+            ddl.append(opt);
+        });
+
+        if (!islemStillValid) {
+            $("#inpUcret").val("");
+            secilenIslemSure = 0;
+            ddl.val("");
+        }
+    }
+
+    function fillCalisanDropdown(calisanlar, eskiSelectedCalisanId) {
+        let ddl = $("#ddlCalisan");
+        ddl.empty();
+        ddl.append('<option value="">--- Çalışan Seçiniz ---</option>');
+
+        let calisanStillValid = false;
+        $.each(calisanlar, function (index, c) {
+            let opt = $('<option></option>').val(c.calisanId).text(c.adSoyad);
+
+            if (c.calisanId == eskiSelectedCalisanId) {
+                opt.prop("selected", true);
+                calisanStillValid = true;
+            }
+            ddl.append(opt);
+        });
+
+        if (!calisanStillValid) {
+            ddl.val("");
+        }
+    }
+
+    function resetDateAndTime() {
+        $("#inpTarih").val("");
+        $("#ddlSaat").empty().append('<option value="">--- Saat Seçiniz ---</option>');
+        $("#inpBitisSaati").val("").closest(".form-group").hide();
+    }
+
+    function guncelleSaatDropdown() {
+        let tarih = $("#inpTarih").val();
+        let calisanId = $("#ddlCalisan").val();
+
+        if (!tarih) {
+            $("#ddlSaat").empty().append('<option value="">--- Saat Seçiniz ---</option>');
+            return;
+        }
+
+        $.getJSON('@Url.Action("GetMusaitSaatler", "Randevu")',
+            { calisanId: calisanId, tarih: tarih },
+            function (saatler) {
+                let ddl = $("#ddlSaat");
+                ddl.empty();
+                ddl.append('<option value="">--- Saat Seçiniz ---</option>');
+                $.each(saatler, function (index, s) {
+                    ddl.append('<option value="' + s + '">' + s + '</option>');
+                });
+            });
+    }
+
+    function hesaplaBitisSaati() {
+        let baslangicStr = $("#ddlSaat").val();
+        if (!baslangicStr || secilenIslemSure <= 0) {
+            $("#inpBitisSaati").val("");
+            $("#inpBitisSaati").closest(".form-group").hide();
+            return;
+        }
+
+        let parts = baslangicStr.split(':');
+        let hh = parseInt(parts[0]);
+        let mm = parseInt(parts[1]);
+        let d = new Date(2020, 0, 1, hh, mm, 0);
+
+        d.setMinutes(d.getMinutes() + secilenIslemSure);
+
+        let bitisHH = ("0" + d.getHours()).slice(-2);
+        let bitisMM = ("0" + d.getMinutes()).slice(-2);
+
+        $("#inpBitisSaati").val(bitisHH + ":" + bitisMM);
+        $("#inpBitisSaati").closest(".form-group").show();
+    }
+</script>
+}

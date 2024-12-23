@@ -9,14 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="042f8d87-684e-475d-99a3-ffc9d33a209c" name="Changes" comment="Ana sayfa tamamlandı. İşlemler sayfası hazırlanmaya başlandı.">
-      <change afterPath="$PROJECT_DIR$/Models/Islem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wwwroot/img/beard-trim.png" afterDir="false" />
+    <list default="true" id="042f8d87-684e-475d-99a3-ffc9d33a209c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Controllers/RandevuController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/Calisan.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/CalisanIslem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/CalisanUygunSaat.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/Randevu.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/ViewModels/RandevuAlViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Randevu/RandevuAl.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Randevu/Randevularim.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KuaforSalonuYonetim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KuaforSalonuYonetim/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/KullaniciController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/KullaniciController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KuaforSalonuYonetim.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/KuaforSalonuYonetim.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/KuaforContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/KuaforContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Home/Islemler.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Islemler.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +141,10 @@
       <workItem from="1734381179801" duration="434000" />
       <workItem from="1734467007973" duration="14355000" />
       <workItem from="1734707705690" duration="6911000" />
-      <workItem from="1734720137190" duration="27148000" />
+      <workItem from="1734720137190" duration="32169000" />
+      <workItem from="1734956795497" duration="12281000" />
+      <workItem from="1734969871715" duration="4195000" />
+      <workItem from="1734974720635" duration="4177000" />
     </task>
     <task id="LOCAL-00001" summary="Models ve Migrations klsörlerine yeni dosyalar eklenerek veritabanı çalışmalarına başlandı">
       <option name="closed" value="true" />
@@ -185,7 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734810890393</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Çalışma saati ve işlemleri veritabanında alıp gösteren İşlem sayfası tamamlandı.">
+      <option name="closed" value="true" />
+      <created>1734884912773</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1734884912774</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,6 +229,7 @@
     <MESSAGE value="Giriş ve kayıt işlemleri başarıyla yapılıyor.Login ve sign up sayfaları güncellendi." />
     <MESSAGE value="Kullanıcının bilgilerini görmesi ve güncellemesi sağlandı." />
     <MESSAGE value="Ana sayfa tamamlandı. İşlemler sayfası hazırlanmaya başlandı." />
-    <option name="LAST_COMMIT_MESSAGE" value="Ana sayfa tamamlandı. İşlemler sayfası hazırlanmaya başlandı." />
+    <MESSAGE value="Çalışma saati ve işlemleri veritabanında alıp gösteren İşlem sayfası tamamlandı." />
+    <option name="LAST_COMMIT_MESSAGE" value="Çalışma saati ve işlemleri veritabanında alıp gösteren İşlem sayfası tamamlandı." />
   </component>
 </project>

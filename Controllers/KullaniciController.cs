@@ -213,8 +213,7 @@ public class KullaniciController : Controller
         TempData["SuccessMessage"] = "Profil başarıyla güncellendi!";
         return RedirectToAction("Profil");
     }
-
-
+    
     // Çıkış yapma işlemi
     public IActionResult Logout()
     {
