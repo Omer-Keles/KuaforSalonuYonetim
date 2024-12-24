@@ -150,6 +150,10 @@
     color: var(--light);
 }
 
+.card-title {
+    color: #0c0e12;
+}
+
 /*** Footer ***/
 .footer .btn.btn-link {
     display: block;

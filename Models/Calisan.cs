@@ -11,4 +11,5 @@ public class Calisan
     public string Telefon { get; set; } = null!;
     // Navigation Properties
     public List<CalisanIslem> CalisanIslemler { get; set; } = new(); // Çalışanın yapabildiği işlemler
+    public List<CalisanUygunSaat> UygunSaatler { get; set; } = new();
 }

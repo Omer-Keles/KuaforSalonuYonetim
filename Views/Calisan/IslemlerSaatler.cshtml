@@ -1,0 +1,31 @@
+﻿@model KuaforSalonuYonetim.Models.Calisan
+@{
+    var uygunSaatler = ViewData["UygunSaatler"] as List<KuaforSalonuYonetim.Models.CalisanUygunSaat>;
+}
+
+<div class="container my-5">
+    <h2>@Model.CalisanAdi @Model.CalisanSoyadi - İşlemler ve Saatler</h2>
+    
+    <h4>Yaptığı İşlemler</h4>
+    <ul>
+        @foreach (var islem in Model.CalisanIslemler)
+        {
+            <li>@islem.Islem.IslemAdi</li>
+        }
+    </ul>
+
+    <h4>Uygun Saatler</h4>
+    <ul>
+        @if (uygunSaatler != null && uygunSaatler.Any())
+        {
+            foreach (var saat in uygunSaatler)
+            {
+                <li>@saat.Gun: @saat.BaslangicSaati - @saat.BitisSaati</li>
+            }
+        }
+        else
+        {
+            <li>Uygun saat bulunamadı.</li>
+        }
+    </ul>
+</div>

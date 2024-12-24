@@ -1,19 +1,16 @@
 using KuaforSalonuYonetim.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Microsoft.EntityFrameworkCore;
 
 namespace KuaforSalonuYonetim.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly KuaforContext _context;
 
-        public HomeController(KuaforContext context, ILogger<HomeController> logger)
+        public HomeController(KuaforContext context)
         {
             _context = context;
-            _logger = logger;
         }
 
         public IActionResult Index()
@@ -21,7 +18,7 @@ namespace KuaforSalonuYonetim.Controllers
             // Kullanıcı oturumu açmış mı kontrol et
             ViewData["KullaniciEmail"] = HttpContext.Session.GetString("Kullanici_Email");
             ViewData["KullaniciAdi"] = HttpContext.Session.GetString("Kullanici_Adi");
-            
+            ViewData["KullaniciRol"] = HttpContext.Session.GetString("Kullanici_Rol");
             // Salon bilgisini veritabanından alıyoruz
             var salon = _context.Salonlar.FirstOrDefault();
 
@@ -40,7 +37,7 @@ namespace KuaforSalonuYonetim.Controllers
             // Kullanıcı oturumu açmış mı kontrol et
             ViewData["KullaniciEmail"] = HttpContext.Session.GetString("Kullanici_Email");
             ViewData["KullaniciAdi"] = HttpContext.Session.GetString("Kullanici_Adi");
-            
+            ViewData["KullaniciRol"] = HttpContext.Session.GetString("Kullanici_Rol");
             // Salon bilgisini veritabanından alıyoruz
             var salon = _context.Salonlar.FirstOrDefault();
 

@@ -1,11 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Globalization;
-using System.Linq;
-using System.Collections.Generic;
-
 using KuaforSalonuYonetim.Models;
 using KuaforSalonuYonetim.Models.ViewModels;
 
@@ -32,6 +27,7 @@ namespace KuaforSalonuYonetim.Controllers
             {
                 return RedirectToAction("Login", "Kullanici");
             }
+
             // Formun ilk görüntülenişi -> Tüm işlemler, tüm çalışanlar
             var vm = new RandevuAlViewModel
             {
@@ -48,6 +44,7 @@ namespace KuaforSalonuYonetim.Controllers
         {
             ViewData["KullaniciEmail"] = HttpContext.Session.GetString("Kullanici_Email");
             ViewData["KullaniciAdi"] = HttpContext.Session.GetString("Kullanici_Adi");
+
             if (!ModelState.IsValid)
             {
                 model.Islemler = _context.Islemler.ToList();
@@ -55,7 +52,6 @@ namespace KuaforSalonuYonetim.Controllers
                 return View(model);
             }
 
-            // Session'dan kullanıcı maili (örnek)
             var kullaniciEmail = HttpContext.Session.GetString("Kullanici_Email");
             if (string.IsNullOrEmpty(kullaniciEmail))
             {
@@ -71,39 +67,33 @@ namespace KuaforSalonuYonetim.Controllers
                 return View(model);
             }
 
-            // Seçilen işlem ve çalışan
             var secilenIslem = _context.Islemler.FirstOrDefault(i => i.IslemId == model.IslemId);
             var secilenCalisan = _context.Calisanlar.FirstOrDefault(c => c.CalisanId == model.CalisanId);
 
-            if (secilenIslem == null)
+            if (secilenIslem == null || secilenCalisan == null)
             {
-                ModelState.AddModelError("", "Seçilen işlem yok.");
-                model.Islemler = _context.Islemler.ToList();
-                model.Calisanlar = _context.Calisanlar.ToList();
-                return View(model);
-            }
-            if (secilenCalisan == null)
-            {
-                ModelState.AddModelError("", "Seçilen çalışan yok.");
+                ModelState.AddModelError("", "Seçilen işlem veya çalışan geçersiz.");
                 model.Islemler = _context.Islemler.ToList();
                 model.Calisanlar = _context.Calisanlar.ToList();
                 return View(model);
             }
 
-            // Tarih, saat
             var baslangic = model.BaslangicSaati ?? TimeSpan.Zero;
             var islemSuresi = TimeSpan.FromMinutes(secilenIslem.Sure);
             var bitis = (model.BitisSaati == null || model.BitisSaati == TimeSpan.Zero)
-                        ? baslangic.Add(islemSuresi)
-                        : model.BitisSaati.Value;
+                ? baslangic.Add(islemSuresi)
+                : model.BitisSaati.Value;
+
             var randevuTarihi = model.RandevuTarihi.Value.Date;
 
-            // Aynı çalışanın aynı saat aralığında randevusu var mı?
+            // Güncellenmiş çakışma kontrolü
             bool cakismaVar = _context.Randevular.Any(r =>
                 r.CalisanId == secilenCalisan.CalisanId &&
                 r.RandevuTarihi.Date == randevuTarihi &&
+                r.Durum != "Reddedildi" && // Reddedilen randevuları hariç tut
                 (r.BaslangicSaati < bitis && r.BitisSaati > baslangic)
             );
+
             if (cakismaVar)
             {
                 ModelState.AddModelError("", "Seçilen tarih ve saatte bu çalışanın başka randevusu var.");
@@ -128,9 +118,9 @@ namespace KuaforSalonuYonetim.Controllers
             _context.Randevular.Add(randevu);
             _context.SaveChanges();
 
-            // Onay sayfasına yönlendir
             return RedirectToAction("Randevularim");
         }
+
 
         [HttpGet]
         public IActionResult Randevularim()
@@ -142,7 +132,7 @@ namespace KuaforSalonuYonetim.Controllers
             if (string.IsNullOrEmpty(kullaniciEmail))
             {
                 // Eğer giriş yapılmamışsa ya da session yoksa, login sayfasına yönlendirebilirsiniz
-                return RedirectToAction("Login", "Account"); 
+                return RedirectToAction("Login", "Kullanici");
             }
 
             // 2) Kullanıcıyı veritabanında bul
@@ -151,7 +141,7 @@ namespace KuaforSalonuYonetim.Controllers
             if (kullanici == null)
             {
                 // Kullanıcı geçersizse
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Kullanici");
             }
 
             // 3) İlgili kullanıcının randevularını çek
@@ -163,7 +153,7 @@ namespace KuaforSalonuYonetim.Controllers
                 .OrderByDescending(r => r.RandevuTarihi) // tarih sıralaması (isteğe bağlı)
                 .ToList();
 
-            return View("Randevularim", randevular); 
+            return View("Randevularim", randevular);
             // "Randevularim.cshtml" adında bir view döndürür
         }
 
@@ -177,13 +167,14 @@ namespace KuaforSalonuYonetim.Controllers
         public IActionResult GetAllIslemler()
         {
             var all = _context.Islemler
-                              .Select(i => new {
-                                  i.IslemId,
-                                  i.IslemAdi,
-                                  i.Ucret,
-                                  i.Sure
-                              })
-                              .ToList();
+                .Select(i => new
+                {
+                    i.IslemId,
+                    i.IslemAdi,
+                    i.Ucret,
+                    i.Sure
+                })
+                .ToList();
             return Json(all);
         }
 
@@ -192,11 +183,12 @@ namespace KuaforSalonuYonetim.Controllers
         public IActionResult GetAllCalisanlar()
         {
             var all = _context.Calisanlar
-                              .Select(c => new {
-                                  c.CalisanId,
-                                  AdSoyad = c.CalisanAdi + " " + c.CalisanSoyadi
-                              })
-                              .ToList();
+                .Select(c => new
+                {
+                    c.CalisanId,
+                    AdSoyad = c.CalisanAdi + " " + c.CalisanSoyadi
+                })
+                .ToList();
             return Json(all);
         }
 
@@ -205,19 +197,20 @@ namespace KuaforSalonuYonetim.Controllers
         public IActionResult GetIslemlerByCalisan(int calisanId)
         {
             var islemIdList = _context.CalisanIslemler
-                                      .Where(ci => ci.CalisanId == calisanId)
-                                      .Select(ci => ci.IslemId)
-                                      .Distinct()
-                                      .ToList();
+                .Where(ci => ci.CalisanId == calisanId)
+                .Select(ci => ci.IslemId)
+                .Distinct()
+                .ToList();
             var islemler = _context.Islemler
-                                   .Where(i => islemIdList.Contains(i.IslemId))
-                                   .Select(i => new {
-                                       i.IslemId,
-                                       i.IslemAdi,
-                                       i.Ucret,
-                                       i.Sure
-                                   })
-                                   .ToList();
+                .Where(i => islemIdList.Contains(i.IslemId))
+                .Select(i => new
+                {
+                    i.IslemId,
+                    i.IslemAdi,
+                    i.Ucret,
+                    i.Sure
+                })
+                .ToList();
             return Json(islemler);
         }
 
@@ -226,17 +219,18 @@ namespace KuaforSalonuYonetim.Controllers
         public IActionResult GetCalisanlarByIslem(int islemId)
         {
             var calisanIdList = _context.CalisanIslemler
-                                        .Where(ci => ci.IslemId == islemId)
-                                        .Select(ci => ci.CalisanId)
-                                        .Distinct()
-                                        .ToList();
+                .Where(ci => ci.IslemId == islemId)
+                .Select(ci => ci.CalisanId)
+                .Distinct()
+                .ToList();
             var calisanlar = _context.Calisanlar
-                                     .Where(c => calisanIdList.Contains(c.CalisanId))
-                                     .Select(c => new {
-                                         c.CalisanId,
-                                         AdSoyad = c.CalisanAdi + " " + c.CalisanSoyadi
-                                     })
-                                     .ToList();
+                .Where(c => calisanIdList.Contains(c.CalisanId))
+                .Select(c => new
+                {
+                    c.CalisanId,
+                    AdSoyad = c.CalisanAdi + " " + c.CalisanSoyadi
+                })
+                .ToList();
             return Json(calisanlar);
         }
 
@@ -253,7 +247,8 @@ namespace KuaforSalonuYonetim.Controllers
         [HttpGet]
         public IActionResult GetMusaitSaatler(int? calisanId, string tarih)
         {
-            if (!DateTime.TryParseExact(tarih, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime seciliTarih))
+            if (!DateTime.TryParseExact(tarih, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None,
+                    out DateTime seciliTarih))
                 return BadRequest("Geçersiz tarih formatı.");
 
             string gunAdi = seciliTarih.ToString("dddd", new CultureInfo("tr-TR"));
@@ -273,7 +268,7 @@ namespace KuaforSalonuYonetim.Controllers
             {
                 // Çalışanın uygun saati
                 var calisanSaati = _context.CalisanUygunSaatler
-                                           .FirstOrDefault(cu => cu.CalisanId == calisanId && cu.Gun == gunAdi);
+                    .FirstOrDefault(cu => cu.CalisanId == calisanId && cu.Gun == gunAdi);
                 if (calisanSaati == null) return Json(new List<string>());
                 baslangic = calisanSaati.BaslangicSaati;
                 bitis = calisanSaati.BitisSaati;
@@ -288,9 +283,9 @@ namespace KuaforSalonuYonetim.Controllers
                 curr = curr.Add(new TimeSpan(0, 30, 0));
             }
 
-            // O günkü randevuları al
+            // O günkü randevuları al ve "Reddedildi" olanları hariç tut
             var randevular = _context.Randevular
-                                     .Where(r => r.RandevuTarihi.Date == seciliTarih.Date);
+                .Where(r => r.RandevuTarihi.Date == seciliTarih.Date && r.Durum != "Reddedildi");
             if (calisanId != null && calisanId != 0)
                 randevular = randevular.Where(r => r.CalisanId == calisanId);
 

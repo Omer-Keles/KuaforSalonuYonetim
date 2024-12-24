@@ -1,0 +1,146 @@
+﻿@{
+    ViewData["Title"] = "Randevular";
+    var beklemede = ViewData["Beklemede"] as List<KuaforSalonuYonetim.Models.Randevu>;
+    var onaylanan = ViewData["Onaylanan"] as List<KuaforSalonuYonetim.Models.Randevu>;
+    var reddedilen = ViewData["Reddedilen"] as List<KuaforSalonuYonetim.Models.Randevu>;
+}
+
+<div class="container my-5">
+    <h2>Randevular</h2>
+
+    <!-- Tabs -->
+    <ul class="nav nav-tabs mb-4" id="randevuTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="beklemede-tab" data-bs-toggle="tab" data-bs-target="#beklemede" type="button" role="tab" aria-controls="beklemede" aria-selected="true">Beklemede</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="onaylanan-tab" data-bs-toggle="tab" data-bs-target="#onaylanan" type="button" role="tab" aria-controls="onaylanan" aria-selected="false">Onaylanan</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="reddedilen-tab" data-bs-toggle="tab" data-bs-target="#reddedilen" type="button" role="tab" aria-controls="reddedilen" aria-selected="false">Reddedilen</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="randevuTabsContent">
+        <!-- Beklemede -->
+        <div class="tab-pane fade show active" id="beklemede" role="tabpanel" aria-labelledby="beklemede-tab">
+            @if (beklemede != null && beklemede.Any())
+            {
+                <table class="table table-striped table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Tarih</th>
+                            <th>İşlem</th>
+                            <th>Başlangıç Saati</th>
+                            <th>Bitiş Saati</th>
+                            <th>Ücret</th>
+                            <th>Müşteri</th>
+                            <th>Durum</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var randevu in beklemede)
+                        {
+                            <tr>
+                                <td>@randevu.RandevuTarihi.ToString("yyyy-MM-dd")</td>
+                                <td>@randevu.Islem.IslemAdi</td>
+                                <td>@randevu.BaslangicSaati</td>
+                                <td>@randevu.BitisSaati</td>
+                                <td>@randevu.Ucret</td>
+                                <td>@randevu.Kullanici.Kullanici_Adi @randevu.Kullanici.Kullanici_Soyad</td>
+                                <td>@randevu.Durum</td>
+                                <td>
+                                    <form asp-action="Onayla" method="post" style="display:inline;">
+                                        <input type="hidden" name="id" value="@randevu.RandevuId" />
+                                        <button type="submit" class="btn btn-success btn-sm">Onayla</button>
+                                    </form>
+                                    <form asp-action="Reddet" method="post" style="display:inline;">
+                                        <input type="hidden" name="id" value="@randevu.RandevuId" />
+                                        <button type="submit" class="btn btn-danger btn-sm">Reddet</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p class="text-muted">Beklemede olan randevu bulunmamaktadır.</p>
+            }
+        </div>
+
+        <!-- Onaylanan -->
+        <div class="tab-pane fade" id="onaylanan" role="tabpanel" aria-labelledby="onaylanan-tab">
+            @if (onaylanan != null && onaylanan.Any())
+            {
+                <table class="table table-striped table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Tarih</th>
+                            <th>Başlangıç Saati</th>
+                            <th>Bitiş Saati</th>
+                            <th>İşlem</th>
+                            <th>Müşteri</th>
+                            <th>Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var randevu in onaylanan)
+                        {
+                            <tr>
+                                <td>@randevu.RandevuTarihi.ToString("yyyy-MM-dd")</td>
+                                <td>@randevu.BaslangicSaati</td>
+                                <td>@randevu.BitisSaati</td>
+                                <td>@randevu.Islem.IslemAdi</td>
+                                <td>@randevu.Kullanici.Kullanici_Adi @randevu.Kullanici.Kullanici_Soyad</td>
+                                <td>@randevu.Durum</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p class="text-muted">Onaylanan randevu bulunmamaktadır.</p>
+            }
+        </div>
+
+        <!-- Reddedilen -->
+        <div class="tab-pane fade" id="reddedilen" role="tabpanel" aria-labelledby="reddedilen-tab">
+            @if (reddedilen != null && reddedilen.Any())
+            {
+                <table class="table table-striped table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Tarih</th>
+                            <th>Başlangıç Saati</th>
+                            <th>Bitiş Saati</th>
+                            <th>İşlem</th>
+                            <th>Müşteri</th>
+                            <th>Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var randevu in reddedilen)
+                        {
+                            <tr>
+                                <td>@randevu.RandevuTarihi.ToString("yyyy-MM-dd")</td>
+                                <td>@randevu.BaslangicSaati</td>
+                                <td>@randevu.BitisSaati</td>
+                                <td>@randevu.Islem.IslemAdi</td>
+                                <td>@randevu.Kullanici.Kullanici_Adi @randevu.Kullanici.Kullanici_Soyad</td>
+                                <td>@randevu.Durum</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p class="text-muted">Reddedilen randevu bulunmamaktadır.</p>
+            }
+        </div>
+    </div>
+</div>

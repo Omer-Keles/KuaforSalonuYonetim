@@ -10,19 +10,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="042f8d87-684e-475d-99a3-ffc9d33a209c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Controllers/RandevuController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Calisan.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/CalisanIslem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/CalisanUygunSaat.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Randevu.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ViewModels/RandevuAlViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/Randevu/RandevuAl.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/Randevu/Randevularim.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controllers/CalisanApiController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controllers/CalisanController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Calisan/CalisanRandevular.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Calisan/Duzenle.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Calisan/Index.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Calisan/IslemlerSaatler.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Calisan/Randevular.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KuaforSalonuYonetim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KuaforSalonuYonetim/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/HomeController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/KullaniciController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/KullaniciController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KuaforSalonuYonetim.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/KuaforSalonuYonetim.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/KuaforContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/KuaforContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/RandevuController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/RandevuController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Calisan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Calisan.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/site.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,25 +65,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.KuaforSalonuYonetim: IIS Express.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;RiderNuGetOptionsPageId&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.KuaforSalonuYonetim: IIS Express.executor": "Run",
+    ".NET Launch Settings Profile.KuaforSalonuYonetim: http.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "RiderNuGetOptionsPageId",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;sqlserver.localdb&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlserver.localdb"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.KuaforSalonuYonetim: IIS Express">
     <configuration name="KuaforSalonuYonetim: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/KuaforSalonuYonetim.csproj" />
@@ -144,7 +147,8 @@
       <workItem from="1734720137190" duration="32169000" />
       <workItem from="1734956795497" duration="12281000" />
       <workItem from="1734969871715" duration="4195000" />
-      <workItem from="1734974720635" duration="4177000" />
+      <workItem from="1734974720635" duration="7953000" />
+      <workItem from="1735063185362" duration="7795000" />
     </task>
     <task id="LOCAL-00001" summary="Models ve Migrations klsörlerine yeni dosyalar eklenerek veritabanı çalışmalarına başlandı">
       <option name="closed" value="true" />
@@ -202,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734884912774</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Kullanıcının giriş yaptıktan sonra randevu alabilmesi ve randevularını görüntüleyebilmesi sağlandı.">
+      <option name="closed" value="true" />
+      <created>1734983775033</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1734983775033</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +242,7 @@
     <MESSAGE value="Kullanıcının bilgilerini görmesi ve güncellemesi sağlandı." />
     <MESSAGE value="Ana sayfa tamamlandı. İşlemler sayfası hazırlanmaya başlandı." />
     <MESSAGE value="Çalışma saati ve işlemleri veritabanında alıp gösteren İşlem sayfası tamamlandı." />
-    <option name="LAST_COMMIT_MESSAGE" value="Çalışma saati ve işlemleri veritabanında alıp gösteren İşlem sayfası tamamlandı." />
+    <MESSAGE value="Kullanıcının giriş yaptıktan sonra randevu alabilmesi ve randevularını görüntüleyebilmesi sağlandı." />
+    <option name="LAST_COMMIT_MESSAGE" value="Kullanıcının giriş yaptıktan sonra randevu alabilmesi ve randevularını görüntüleyebilmesi sağlandı." />
   </component>
 </project>

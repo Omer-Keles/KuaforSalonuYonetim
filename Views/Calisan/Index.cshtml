@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Çalışanlar";
+}
+<link rel="stylesheet" href="~/css/site.css"/>
+<div class="container my-5">
+    <h2 class="mb-4">Çalışanlar</h2>
+    <div id="calisan-listesi" class="row gy-3">
+        <!-- Çalışanlar burada listelenecek -->
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // API'den çalışanları çek
+            $.getJSON('/api/CalisanApi', function (data) {
+                let container = $("#calisan-listesi");
+                container.empty();
+
+                // Çalışanları listele
+                data.forEach(calisan => {
+                    container.append(`
+                        <div class="col-12 col-md-6">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">${calisan.calisanAdi} ${calisan.calisanSoyadi}</h5>
+                                    <p class="card-text"><strong>Telefon:</strong> ${calisan.telefon}</p>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="/Calisan/CalisanRandevular/${calisan.calisanId}" class="btn btn-primary btn-sm">
+                                            <i class="bi bi-calendar-event"></i> Randevular
+                                        </a>
+                                        <a href="/Calisan/IslemlerSaatler/${calisan.calisanId}" class="btn btn-secondary btn-sm">
+                                            <i class="bi bi-info-circle"></i> İşlemler ve Saatler
+                                        </a>
+                                        <a href="/Calisan/Duzenle/${calisan.calisanId}" class="btn btn-warning btn-sm">
+                                            <i class="bi bi-pencil-square"></i> Düzenle
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `);
+                });
+            });
+        });
+    </script>
+}

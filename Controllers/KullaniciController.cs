@@ -84,6 +84,7 @@ public class KullaniciController : Controller
             // Başarılı giriş, kullanıcı bilgilerini session'a kaydediyoruz
             HttpContext.Session.SetString("Kullanici_Email", kullanici.Kullanici_Email);
             HttpContext.Session.SetString("Kullanici_Adi", kullanici.Kullanici_Adi);
+            HttpContext.Session.SetString("Kullanici_Rol", kullanici.Kullanici_Rol);
 
             return RedirectToAction("Index", "Home"); // Ana sayfaya yönlendir
         }
@@ -99,6 +100,7 @@ public class KullaniciController : Controller
     {
         ViewData["KullaniciEmail"] = HttpContext.Session.GetString("Kullanici_Email");
         ViewData["KullaniciAdi"] = HttpContext.Session.GetString("Kullanici_Adi");
+        ViewData["KullaniciRol"] = HttpContext.Session.GetString("Kullanici_Rol");
 
         var kullaniciEmail = HttpContext.Session.GetString("Kullanici_Email");
 
@@ -122,6 +124,7 @@ public class KullaniciController : Controller
     {
         ViewData["KullaniciEmail"] = HttpContext.Session.GetString("Kullanici_Email");
         ViewData["KullaniciAdi"] = HttpContext.Session.GetString("Kullanici_Adi");
+        ViewData["KullaniciRol"] = HttpContext.Session.GetString("Kullanici_Rol");
         var kullaniciEmail = HttpContext.Session.GetString("Kullanici_Email");
 
         if (string.IsNullOrEmpty(kullaniciEmail))
@@ -219,6 +222,7 @@ public class KullaniciController : Controller
     {
         HttpContext.Session.Remove("Kullanici_Email");
         HttpContext.Session.Remove("Kullanici_Adi");
+        HttpContext.Session.Remove("Kullanici_Rol");
 
         return RedirectToAction("Index", "Home"); // Ana sayfaya yönlendir
     }
