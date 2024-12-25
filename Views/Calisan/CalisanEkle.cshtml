@@ -1,0 +1,74 @@
+﻿@model KuaforSalonuYonetim.Models.Calisan
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="mb-0">Yeni Çalışan Ekle</h3>
+                </div>
+                <div class="card-body">
+                    <!-- Hata ve Başarı Mesajları -->
+                    @if (TempData["HataMesaji"] != null)
+                    {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        @TempData["HataMesaji"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    }
+
+                    @if (TempData["BasariMesaji"] != null)
+                    {
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        @TempData["BasariMesaji"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    }
+
+                    <!-- Çalışan Ekleme Formu -->
+                    <form asp-action="CalisanEkle" method="post" class="needs-validation" novalidate>
+                        <div class="mb-4">
+                            <label for="CalisanAdi" class="form-label">Çalışan Adı</label>
+                            <input type="text" class="form-control form-control-lg" id="CalisanAdi" name="CalisanAdi" value="@Model?.CalisanAdi" placeholder="Örn: Ahmet" required />
+                            <div class="invalid-feedback">Lütfen çalışan adını giriniz.</div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="CalisanSoyadi" class="form-label">Çalışan Soyadı</label>
+                            <input type="text" class="form-control form-control-lg" id="CalisanSoyadi" name="CalisanSoyadi" value="@Model?.CalisanSoyadi" placeholder="Örn: Yılmaz" required />
+                            <div class="invalid-feedback">Lütfen çalışan soyadını giriniz.</div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="Telefon" class="form-label">Telefon</label>
+                            <input type="tel" class="form-control form-control-lg" id="Telefon" name="Telefon" value="@Model?.Telefon" placeholder="Örn: 0555 555 5555" required />
+                            <div class="invalid-feedback">Lütfen geçerli bir telefon numarası giriniz.</div>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="bi bi-plus-circle"></i> Ekle
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    // Bootstrap form validation
+    (function () {
+        'use strict';
+        var forms = document.querySelectorAll('.needs-validation');
+        Array.prototype.slice.call(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+</script>
+}

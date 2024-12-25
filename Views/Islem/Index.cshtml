@@ -1,0 +1,47 @@
+﻿@model List<KuaforSalonuYonetim.Models.Islem>
+@{
+    ViewData["Title"] = "İşlemler";
+}
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>İşlemler</h2>
+        <a href="/Islem/IslemEkle" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Yeni İşlem Ekle
+        </a>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-light">
+        <tr>
+            <th>Adı</th>
+            <th>Açıklama</th>
+            <th>Ücret</th>
+            <th>Süre (dk)</th>
+            <th>Aksiyon</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var islem in Model)
+        {
+            <tr>
+                <td>@islem.IslemAdi</td>
+                <td>@islem.IslemAciklama</td>
+                <td>@islem.Ucret.ToString("C")</td>
+                <td>@islem.Sure</td>
+                <td>
+                    <a href="/Islem/Duzenle/@islem.IslemId" class="btn btn-warning btn-sm">
+                        <i class="bi bi-pencil-square"></i> Düzenle
+                    </a>
+                    <form asp-action="Sil" method="post" class="d-inline">
+                        <input type="hidden" name="id" value="@islem.IslemId" />
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bu işlemi silmek istediğinize emin misiniz?')">
+                            <i class="bi bi-trash"></i> Sil
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

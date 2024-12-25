@@ -25,7 +25,7 @@ var calisanAdi = ViewData["CalisanAdi"] as string;
         @foreach (var randevu in Model)
         {
         <tr>
-            <td>@randevu.RandevuTarihi.ToString("yyyy-MM-dd")</td>
+            <td>@randevu.RandevuTarihi.ToString("dd-MM-yyyy")</td>
             <td>@randevu.Islem.IslemAdi</td>
             <td>@randevu.BaslangicSaati</td>
             <td>@randevu.BitisSaati</td>

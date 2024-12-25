@@ -21,11 +21,18 @@ namespace KuaforSalonuYonetim.Controllers
         {
             ViewData["KullaniciEmail"] = HttpContext.Session.GetString("Kullanici_Email");
             ViewData["KullaniciAdi"] = HttpContext.Session.GetString("Kullanici_Adi");
+            ViewData["KullaniciRol"] = HttpContext.Session.GetString("Kullanici_Rol");
             // Session'dan kullanıcı maili (örnek)
             var kullaniciEmail = HttpContext.Session.GetString("Kullanici_Email");
+            
             if (string.IsNullOrEmpty(kullaniciEmail))
             {
                 return RedirectToAction("Login", "Kullanici");
+            }
+            var kullaniciRol = HttpContext.Session.GetString("Kullanici_Rol");
+            if (kullaniciRol == "Admin")
+            {
+                return RedirectToAction("Index","Home");
             }
 
             // Formun ilk görüntülenişi -> Tüm işlemler, tüm çalışanlar
@@ -44,6 +51,7 @@ namespace KuaforSalonuYonetim.Controllers
         {
             ViewData["KullaniciEmail"] = HttpContext.Session.GetString("Kullanici_Email");
             ViewData["KullaniciAdi"] = HttpContext.Session.GetString("Kullanici_Adi");
+            ViewData["KullaniciRol"] = HttpContext.Session.GetString("Kullanici_Rol");
 
             if (!ModelState.IsValid)
             {
@@ -56,6 +64,11 @@ namespace KuaforSalonuYonetim.Controllers
             if (string.IsNullOrEmpty(kullaniciEmail))
             {
                 return RedirectToAction("Login", "Kullanici");
+            }
+            var kullaniciRol = HttpContext.Session.GetString("Kullanici_Rol");
+            if (kullaniciRol == "Admin")
+            {
+                return RedirectToAction("Index","Home");
             }
 
             var kullanici = _context.Kullanicilar.FirstOrDefault(u => u.Kullanici_Email == kullaniciEmail);
@@ -127,12 +140,18 @@ namespace KuaforSalonuYonetim.Controllers
         {
             ViewData["KullaniciEmail"] = HttpContext.Session.GetString("Kullanici_Email");
             ViewData["KullaniciAdi"] = HttpContext.Session.GetString("Kullanici_Adi");
+            ViewData["KullaniciRol"] = HttpContext.Session.GetString("Kullanici_Rol");
             // 1) Session'dan kullanıcı e-mailini al
             var kullaniciEmail = HttpContext.Session.GetString("Kullanici_Email");
             if (string.IsNullOrEmpty(kullaniciEmail))
             {
                 // Eğer giriş yapılmamışsa ya da session yoksa, login sayfasına yönlendirebilirsiniz
                 return RedirectToAction("Login", "Kullanici");
+            }
+            var kullaniciRol = HttpContext.Session.GetString("Kullanici_Rol");
+            if (kullaniciRol == "Admin")
+            {
+                return RedirectToAction("Index","Home");
             }
 
             // 2) Kullanıcıyı veritabanında bul

@@ -1,31 +1,158 @@
-﻿@model KuaforSalonuYonetim.Models.Calisan
-@{
-    var uygunSaatler = ViewData["UygunSaatler"] as List<KuaforSalonuYonetim.Models.CalisanUygunSaat>;
-}
-
-<div class="container my-5">
-    <h2>@Model.CalisanAdi @Model.CalisanSoyadi - İşlemler ve Saatler</h2>
-    
-    <h4>Yaptığı İşlemler</h4>
-    <ul>
-        @foreach (var islem in Model.CalisanIslemler)
-        {
-            <li>@islem.Islem.IslemAdi</li>
-        }
-    </ul>
-
-    <h4>Uygun Saatler</h4>
-    <ul>
-        @if (uygunSaatler != null && uygunSaatler.Any())
-        {
-            foreach (var saat in uygunSaatler)
+﻿<div class="container my-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h3>@Model.CalisanAdi @Model.CalisanSoyadi - İşlemler ve Uygun Saatler</h3>
+        </div>
+        <div class="card-body">
+            <!-- Hata ve Başarı Mesajları -->
+            @if (TempData["HataMesaji"] != null)
             {
-                <li>@saat.Gun: @saat.BaslangicSaati - @saat.BitisSaati</li>
+                <div class="alert alert-danger">
+                    @TempData["HataMesaji"]
+                </div>
             }
-        }
-        else
-        {
-            <li>Uygun saat bulunamadı.</li>
-        }
-    </ul>
+
+            @if (TempData["BasariMesaji"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["BasariMesaji"]
+                </div>
+            }
+
+            <!-- İşlemler -->
+            <h4 class="mt-4">Yaptığı İşlemler</h4>
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>İşlem Adı</th>
+                        <th>Aksiyon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var islem in Model.CalisanIslemler)
+                    {
+                        <tr>
+                            <td>@islem.Islem.IslemAdi</td>
+                            <td>
+                                <form asp-action="IslemSil" method="post" class="d-inline">
+                                    <input type="hidden" name="id" value="@islem.Id" />
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="bi bi-trash"></i> Sil
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <!-- Yeni İşlem Ekle -->
+            <h4 class="mt-4">Yeni İşlem Ekle</h4>
+            <form asp-action="IslemEkle" method="post" class="mb-3">
+                <input type="hidden" name="calisanId" value="@Model.CalisanId" />
+                <div class="input-group">
+                    <select name="islemId" class="form-select">
+                        @foreach (var islem in ViewData["Islemler"] as List<KuaforSalonuYonetim.Models.Islem>)
+                        {
+                            <option value="@islem.IslemId">@islem.IslemAdi</option>
+                        }
+                    </select>
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-plus-circle"></i> Ekle
+                    </button>
+                </div>
+            </form>
+
+            <!-- Uygun Saatler -->
+            <h4 class="mt-4">Uygun Saatler</h4>
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Gün</th>
+                        <th>Başlangıç</th>
+                        <th>Bitiş</th>
+                        <th>Aksiyon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var saat in ViewData["UygunSaatler"] as List<KuaforSalonuYonetim.Models.CalisanUygunSaat>)
+                    {
+                        <tr>
+                            <td>@saat.Gun</td>
+                            <td>@saat.BaslangicSaati</td>
+                            <td>@saat.BitisSaati</td>
+                            <td>
+                                <!-- Sil Butonu -->
+                                <form asp-action="SaatSil" method="post" class="d-inline">
+                                    <input type="hidden" name="id" value="@saat.Id" />
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="bi bi-trash"></i> Sil
+                                    </button>
+                                </form>
+
+                                <!-- Güncelleme Modalini Aç -->
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#guncelleModal-@saat.Id">
+                                    <i class="bi bi-pencil"></i> Güncelle
+                                </button>
+
+                                <!-- Güncelleme Modali -->
+                                <div class="modal fade" id="guncelleModal-@saat.Id" tabindex="-1" aria-labelledby="guncelleModalLabel-@saat.Id" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="guncelleModalLabel-@saat.Id">Saat Güncelle</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <form asp-action="SaatGuncelle" method="post">
+                                                <div class="modal-body">
+                                                    <input type="hidden" name="id" value="@saat.Id" />
+                                                    <div class="mb-3">
+                                                        <label for="baslangic-@saat.Id" class="form-label">Başlangıç Saati</label>
+                                                        <input type="time" class="form-control" id="baslangic-@saat.Id" name="baslangic" value="@saat.BaslangicSaati.ToString(@"hh\:mm")" required />
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="bitis-@saat.Id" class="form-label">Bitiş Saati</label>
+                                                        <input type="time" class="form-control" id="bitis-@saat.Id" name="bitis" value="@saat.BitisSaati.ToString(@"hh\:mm")" required />
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                                                    <button type="submit" class="btn btn-primary">Güncelle</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <!-- Yeni Gün ve Saat Ekle -->
+            <h4 class="mt-4">Yeni Gün ve Saat Ekle</h4>
+            <form asp-action="SaatEkle" method="post">
+                <input type="hidden" name="calisanId" value="@Model.CalisanId" />
+                <div class="row">
+                    <div class="col-md-4">
+                        <select name="gun" class="form-select">
+                            @foreach (var salonSaat in ViewData["SalonSaatleri"] as List<KuaforSalonuYonetim.Models.CalismaSaatleri>)
+                            {
+                                <option value="@salonSaat.Gun">@salonSaat.Gun</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="time" name="baslangic" class="form-control" />
+                    </div>
+                    <div class="col-md-4">
+                        <input type="time" name="bitis" class="form-control" />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success mt-3">
+                    <i class="bi bi-plus-circle"></i> Ekle
+                </button>
+            </form>
+        </div>
+    </div>
 </div>

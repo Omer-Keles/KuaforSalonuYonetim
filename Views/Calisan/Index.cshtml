@@ -1,26 +1,33 @@
 ﻿@{
-    ViewData["Title"] = "Çalışanlar";
+ViewData["Title"] = "Çalışanlar";
 }
 <link rel="stylesheet" href="~/css/site.css"/>
+
 <div class="container my-5">
-    <h2 class="mb-4">Çalışanlar</h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Çalışanlar</h2>
+        <a href="/Calisan/CalisanEkle" class="btn btn-success">
+            <i class="bi bi-person-plus"></i> Yeni Çalışan Ekle
+        </a>
+    </div>
+
     <div id="calisan-listesi" class="row gy-3">
         <!-- Çalışanlar burada listelenecek -->
     </div>
 </div>
 
 @section Scripts {
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            // API'den çalışanları çek
-            $.getJSON('/api/CalisanApi', function (data) {
-                let container = $("#calisan-listesi");
-                container.empty();
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // API'den çalışanları çek
+        $.getJSON('/api/CalisanApi', function (data) {
+            let container = $("#calisan-listesi");
+            container.empty();
 
-                // Çalışanları listele
-                data.forEach(calisan => {
-                    container.append(`
+            // Çalışanları listele
+            data.forEach(calisan => {
+                container.append(`
                         <div class="col-12 col-md-6">
                             <div class="card shadow-sm">
                                 <div class="card-body">
@@ -30,19 +37,43 @@
                                         <a href="/Calisan/CalisanRandevular/${calisan.calisanId}" class="btn btn-primary btn-sm">
                                             <i class="bi bi-calendar-event"></i> Randevular
                                         </a>
-                                        <a href="/Calisan/IslemlerSaatler/${calisan.calisanId}" class="btn btn-secondary btn-sm">
+                                        <a href="/Calisan/IslemlerSaatler/${calisan.calisanId}" class="btn btn-light btn-sm">
                                             <i class="bi bi-info-circle"></i> İşlemler ve Saatler
                                         </a>
                                         <a href="/Calisan/Duzenle/${calisan.calisanId}" class="btn btn-warning btn-sm">
                                             <i class="bi bi-pencil-square"></i> Düzenle
                                         </a>
+                                        <button class="btn btn-danger btn-sm sil-btn" data-id="${calisan.calisanId}" data-adsoyad="${calisan.calisanAdi} ${calisan.calisanSoyadi}">
+                                            <i class="bi bi-trash"></i> Sil
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     `);
-                });
+            });
+
+            // Silme butonu için onay ve istek
+            $(".sil-btn").click(function () {
+                let calisanId = $(this).data("id");
+                let adSoyad = $(this).data("adsoyad");
+
+                if (confirm(`${adSoyad} adlı çalışanı silmek istediğinize emin misiniz?`)) {
+                    $.ajax({
+                        url: '/Calisan/CalisanSil',
+                        type: 'POST',
+                        data: { id: calisanId },
+                        success: function (response) {
+                            alert("Çalışan başarıyla silindi!");
+                            location.reload(); // Sayfayı yenile
+                        },
+                        error: function () {
+                            alert("Çalışan silinirken bir hata oluştu.");
+                        }
+                    });
+                }
             });
         });
-    </script>
+    });
+</script>
 }

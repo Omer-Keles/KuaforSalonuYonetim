@@ -17,6 +17,10 @@ public class KullaniciController : Controller
     // GET: /Auth/SignUp
     public IActionResult SignUp()
     {
+        if (HttpContext.Session.GetString("Kullanici_Email") != null)
+        {
+            return RedirectToAction("Index", "Home"); // Ana sayfaya yönlendir
+        }
         return View();
     }
 
@@ -67,6 +71,10 @@ public class KullaniciController : Controller
     [HttpPost]
     public async Task<IActionResult> Login(string email, string parola)
     {
+        if (HttpContext.Session.GetString("Kullanici_Email") != null)
+        {
+            return RedirectToAction("Index", "Home"); // Ana sayfaya yönlendir
+        }
         var kullanici = await _context.Kullanicilar
             .FirstOrDefaultAsync(u => u.Kullanici_Email == email);
 

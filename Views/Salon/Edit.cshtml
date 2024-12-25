@@ -1,0 +1,45 @@
+﻿@model KuaforSalonuYonetim.Models.Salon
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3>Salon Bilgilerini Düzenle</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit" method="post">
+                        <input type="hidden" asp-for="SalonId" />
+
+                        <div class="mb-3">
+                            <label asp-for="SalonAdi" class="form-label fw-bold">Salon Adı</label>
+                            <input asp-for="SalonAdi" class="form-control" placeholder="Salon adını giriniz" />
+                            <span asp-validation-for="SalonAdi" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Adres" class="form-label fw-bold">Adres</label>
+                            <textarea asp-for="Adres" class="form-control" placeholder="Adres giriniz" rows="3"></textarea>
+                            <span asp-validation-for="Adres" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Telefon" class="form-label fw-bold">Telefon</label>
+                            <input asp-for="Telefon" class="form-control" placeholder="Telefon numarasını giriniz" />
+                            <span asp-validation-for="Telefon" class="text-danger"></span>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="bi bi-save"></i> Kaydet
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary px-4 ms-2">
+                                <i class="bi bi-arrow-left"></i> Geri Dön
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

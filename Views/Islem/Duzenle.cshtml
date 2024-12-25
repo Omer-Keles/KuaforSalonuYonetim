@@ -1,0 +1,35 @@
+﻿@model KuaforSalonuYonetim.Models.Islem
+
+<div class="container my-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-warning text-white text-center">
+            <h3>İşlem Düzenle</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Duzenle" method="post">
+                <input type="hidden" asp-for="IslemId" />
+                <div class="mb-3">
+                    <label asp-for="IslemAdi" class="form-label">Adı</label>
+                    <input asp-for="IslemAdi" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="IslemAciklama" class="form-label">Açıklama</label>
+                    <textarea asp-for="IslemAciklama" class="form-control" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Ucret" class="form-label">Ücret</label>
+                    <input asp-for="Ucret" type="number" class="form-control" step="0.01" required />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Sure" class="form-label">Süre (dk)</label>
+                    <input asp-for="Sure" type="number" class="form-control" required />
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-warning btn-lg">
+                        <i class="bi bi-save"></i> Kaydet
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

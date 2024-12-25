@@ -1,0 +1,47 @@
+﻿@model KuaforSalonuYonetim.Models.CalismaSaatleri
+
+@{
+ViewData["Title"] = "Yeni Gün Ekle";
+}
+
+<div class="container mt-5" style="max-width: 600px;">
+    <div class="card shadow-sm">
+        <div class="card-header bg-secondary text-white">
+            <h4 class="card-title">Yeni Gün Ekle</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="YeniGunEkle" method="post">
+                <input type="hidden" asp-for="SalonId" />
+
+                <div class="mb-3">
+                    <label asp-for="Gun" class="form-label fw-bold">Gün Seçiniz</label>
+                    <select asp-for="Gun" asp-items="@(new SelectList(ViewBag.UygunGünler))" class="form-select">
+                        <option value="">Gün Seçiniz</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="BaslangicSaati" class="form-label fw-bold">Başlangıç Saati</label>
+                    <select asp-for="BaslangicSaati" asp-items="@(new SelectList(ViewBag.Saatler))" class="form-select">
+                        <option value="">Başlangıç Saati Seçiniz</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="BitisSaati" class="form-label fw-bold">Bitiş Saati</label>
+                    <select asp-for="BitisSaati" asp-items="@(new SelectList(ViewBag.Saatler))" class="form-select">
+                        <option value="">Bitiş Saati Seçiniz</option>
+                    </select>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg">Ekle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-3 text-center">
+        <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+    </div>
+</div>

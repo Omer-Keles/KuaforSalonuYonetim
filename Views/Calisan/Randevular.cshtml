@@ -30,6 +30,7 @@
                     <thead class="table-light">
                         <tr>
                             <th>Tarih</th>
+                            <th>Çalışan</th>
                             <th>İşlem</th>
                             <th>Başlangıç Saati</th>
                             <th>Bitiş Saati</th>
@@ -43,7 +44,8 @@
                         @foreach (var randevu in beklemede)
                         {
                             <tr>
-                                <td>@randevu.RandevuTarihi.ToString("yyyy-MM-dd")</td>
+                                <td>@randevu.RandevuTarihi.ToString("dd-MM-yyyy")</td>
+                                <td>@randevu.Calisan.CalisanAdi @randevu.Calisan.CalisanSoyadi</td>
                                 <td>@randevu.Islem.IslemAdi</td>
                                 <td>@randevu.BaslangicSaati</td>
                                 <td>@randevu.BitisSaati</td>
@@ -79,9 +81,11 @@
                     <thead class="table-light">
                         <tr>
                             <th>Tarih</th>
+                            <th>Çalışan</th>
+                            <th>İşlem</th>
                             <th>Başlangıç Saati</th>
                             <th>Bitiş Saati</th>
-                            <th>İşlem</th>
+                            <th>Ücret</th>
                             <th>Müşteri</th>
                             <th>Durum</th>
                         </tr>
@@ -90,10 +94,12 @@
                         @foreach (var randevu in onaylanan)
                         {
                             <tr>
-                                <td>@randevu.RandevuTarihi.ToString("yyyy-MM-dd")</td>
+                                <td>@randevu.RandevuTarihi.ToString("dd-MM-yyyy")</td>
+                                <td>@randevu.Calisan.CalisanAdi @randevu.Calisan.CalisanSoyadi</td>
+                                <td>@randevu.Islem.IslemAdi</td>
                                 <td>@randevu.BaslangicSaati</td>
                                 <td>@randevu.BitisSaati</td>
-                                <td>@randevu.Islem.IslemAdi</td>
+                                <td>@randevu.Ucret</td>
                                 <td>@randevu.Kullanici.Kullanici_Adi @randevu.Kullanici.Kullanici_Soyad</td>
                                 <td>@randevu.Durum</td>
                             </tr>
@@ -115,9 +121,11 @@
                     <thead class="table-light">
                         <tr>
                             <th>Tarih</th>
+                            <th>Çalışan</th>
+                            <th>İşlem</th>
                             <th>Başlangıç Saati</th>
                             <th>Bitiş Saati</th>
-                            <th>İşlem</th>
+                            <th>Ücret</th>
                             <th>Müşteri</th>
                             <th>Durum</th>
                         </tr>
@@ -126,10 +134,12 @@
                         @foreach (var randevu in reddedilen)
                         {
                             <tr>
-                                <td>@randevu.RandevuTarihi.ToString("yyyy-MM-dd")</td>
+                                <td>@randevu.RandevuTarihi.ToString("dd-MM-yyyy")</td>
+                                <td>@randevu.Calisan.CalisanAdi @randevu.Calisan.CalisanSoyadi</td>
+                                <td>@randevu.Islem.IslemAdi</td>
                                 <td>@randevu.BaslangicSaati</td>
                                 <td>@randevu.BitisSaati</td>
-                                <td>@randevu.Islem.IslemAdi</td>
+                                <td>@randevu.Ucret</td>
                                 <td>@randevu.Kullanici.Kullanici_Adi @randevu.Kullanici.Kullanici_Soyad</td>
                                 <td>@randevu.Durum</td>
                             </tr>

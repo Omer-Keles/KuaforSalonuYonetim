@@ -36,7 +36,7 @@
     font-weight: normal;
 }
 
-/*** Navbar ***/
+/*** Navbar footer***/
 .navbar .dropdown-toggle::after {
     border: none;
     content: "\f107";
@@ -88,7 +88,7 @@
     .navbar .nav-item .dropdown-menu {
         display: block;
         border: none;
-        background-color: #6c757d;
+        background-color: var(--primary);
         margin-top: 0;
         top: 150%;
         opacity: 0;
@@ -150,8 +150,52 @@
     color: var(--light);
 }
 
+/** Sidebar ***/
+.sidebar {
+    background-color: #191C24; /* Sidebar arka plan rengi */
+    color: #6C7293; /* Metin rengi */
+    min-width: 250px; /* Genişlik */
+    min-height: 100%; /* Sayfanın tamamını kapsayacak şekilde */
+    padding: 20px; /* İç boşluk */
+    position: sticky; /* Scroll olduğunda sabit kalmasını sağlar */
+    top: 0; /* Üstten hizalama */
+}
+
+.sidebar .nav-link {
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    color: #6C7293;
+    transition: all 0.3s ease;
+}
+
+.sidebar .nav-link:hover {
+    color: var(--primary); /* Renk değişkeninden hover efekti */
+    text-decoration: none;
+}
+
+body {
+    display: flex;
+    min-height: 100vh; /* Tüm ekran boyutunu kapsar */
+    flex-direction: column;
+    margin: 0; /* Varsayılan tarayıcı boşluklarını kaldır */
+}
+
+.flex-grow-1 {
+    flex: 1; /* İçerik kısmı, kalan alanı doldurur */
+}
+
+.main-content {
+    padding-bottom: 20px; /* İçeriğe alt boşluk ekleyin */
+}
+
 .card-title {
-    color: #0c0e12;
+    color: var(--primary);
+}
+.card {
+    background-color: #191C24;
+    color: var(--primary);
 }
 
 /*** Footer ***/

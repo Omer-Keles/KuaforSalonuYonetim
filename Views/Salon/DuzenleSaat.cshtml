@@ -1,0 +1,49 @@
+﻿@model KuaforSalonuYonetim.Models.CalismaSaatleri
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <div class="card shadow-lg">
+                <div class="card-header bg-secondary text-white text-center">
+                    <h3>Saat Düzenle</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="DuzenleSaat" method="post">
+                        <input type="hidden" asp-for="CalismaSaatleriId" />
+                        <input type="hidden" asp-for="SalonId" />
+
+                        <div class="mb-3">
+                            <label asp-for="Gun" class="form-label fw-bold">Gün</label>
+                            <input asp-for="Gun" class="form-control" readonly />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="BaslangicSaati" class="form-label fw-bold">Başlangıç Saati</label>
+                            <select asp-for="BaslangicSaati" asp-items="@(new SelectList(ViewBag.Saatler))" class="form-select">
+                                <option value="" disabled selected>Başlangıç saati seçin</option>
+                            </select>
+                            <span asp-validation-for="BaslangicSaati" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="BitisSaati" class="form-label fw-bold">Bitiş Saati</label>
+                            <select asp-for="BitisSaati" asp-items="@(new SelectList(ViewBag.Saatler))" class="form-select">
+                                <option value="" disabled selected>Bitiş saati seçin</option>
+                            </select>
+                            <span asp-validation-for="BitisSaati" class="text-danger"></span>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-success px-4">
+                                <i class="bi bi-save"></i> Kaydet
+                            </button>
+                            <a asp-action="CalismaSaatleri" asp-route-salonId="@Model.SalonId" class="btn btn-secondary px-4 ms-2">
+                                <i class="bi bi-arrow-left"></i> Geri Dön
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
