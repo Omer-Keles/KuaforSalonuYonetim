@@ -10,28 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="042f8d87-684e-475d-99a3-ffc9d33a209c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Controllers/IslemController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controllers/SalonController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/Calisan/CalisanEkle.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/Islem/Duzenle.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/Islem/Index.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/Islem/IslemEkle.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/Salon/CalismaSaatleri.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/Salon/DuzenleSaat.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/Salon/Edit.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/Salon/Index.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/Salon/YeniGunEkle.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controllers/HairstyleController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/HairstyleRequestModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Hairstyle/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.KuaforSalonuYonetim/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.KuaforSalonuYonetim/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/CalisanController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/CalisanController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/KullaniciController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/KullaniciController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/RandevuController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/RandevuController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Calisan/CalisanRandevular.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Calisan/CalisanRandevular.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Calisan/Duzenle.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Calisan/Duzenle.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Calisan/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Calisan/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Calisan/IslemlerSaatler.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Calisan/IslemlerSaatler.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Calisan/Randevular.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Calisan/Randevular.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KuaforSalonuYonetim.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/KuaforSalonuYonetim.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +69,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;RiderNuGetOptionsPageId&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -156,7 +142,11 @@
       <workItem from="1734969871715" duration="4195000" />
       <workItem from="1734974720635" duration="7953000" />
       <workItem from="1735063185362" duration="31004000" />
-      <workItem from="1735094572076" duration="9185000" />
+      <workItem from="1735094572076" duration="18144000" />
+      <workItem from="1735139230882" duration="7621000" />
+      <workItem from="1735232607227" duration="6892000" />
+      <workItem from="1735244245284" duration="5527000" />
+      <workItem from="1735323925334" duration="1461000" />
     </task>
     <task id="LOCAL-00001" summary="Models ve Migrations klsörlerine yeni dosyalar eklenerek veritabanı çalışmalarına başlandı">
       <option name="closed" value="true" />
@@ -230,7 +220,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735071334144</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Admin Paneli bitti.Yetkilendirme işlemleri yapıldı.">
+      <option name="closed" value="true" />
+      <created>1735103851908</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1735103851908</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,6 +258,11 @@
     <MESSAGE value="Çalışma saati ve işlemleri veritabanında alıp gösteren İşlem sayfası tamamlandı." />
     <MESSAGE value="Kullanıcının giriş yaptıktan sonra randevu alabilmesi ve randevularını görüntüleyebilmesi sağlandı." />
     <MESSAGE value="Admin paneli eklendi. Çalışanlar REST Api ile getirildi.Randevu onay mekanizması yapıldı." />
-    <option name="LAST_COMMIT_MESSAGE" value="Admin paneli eklendi. Çalışanlar REST Api ile getirildi.Randevu onay mekanizması yapıldı." />
+    <MESSAGE value="Admin Paneli bitti.Yetkilendirme işlemleri yapıldı." />
+    <option name="LAST_COMMIT_MESSAGE" value="Admin Paneli bitti.Yetkilendirme işlemleri yapıldı." />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

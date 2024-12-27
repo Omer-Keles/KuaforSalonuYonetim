@@ -1,5 +1,6 @@
 using KuaforSalonuYonetim.Models;
 using Microsoft.EntityFrameworkCore;
+using CloudinaryDotNet;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,18 @@ builder.Services.AddSession(options =>
     options.IdleTimeout = TimeSpan.FromMinutes(30);  // Session süresi
     options.Cookie.IsEssential = true;  // Cookie'nin zorunlu olduğunu belirtiyoruz
 });
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+// Cloudinary configuration
+builder.Services.AddSingleton(new Cloudinary(new Account(
+    builder.Configuration["Cloudinary:CloudName"],
+    builder.Configuration["Cloudinary:ApiKey"],
+    builder.Configuration["Cloudinary:ApiSecret"]
+)));
+
+// Add HttpClient for LightX API
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
