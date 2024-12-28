@@ -296,7 +296,7 @@ namespace KuaforSalonuYonetim.Controllers
             // Yarım saat slot
             var slotlar = new List<TimeSpan>();
             var curr = baslangic;
-            while (curr < bitis)
+            while (curr <= bitis)
             {
                 slotlar.Add(curr);
                 curr = curr.Add(new TimeSpan(0, 30, 0));

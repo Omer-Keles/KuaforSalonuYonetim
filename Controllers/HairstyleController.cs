@@ -23,12 +23,18 @@ public class HairstyleController : Controller
     [HttpGet]
     public IActionResult Index()
     {
+        ViewData["KullaniciEmail"] = HttpContext.Session.GetString("Kullanici_Email");
+        ViewData["KullaniciAdi"] = HttpContext.Session.GetString("Kullanici_Adi");
+        ViewData["KullaniciRol"] = HttpContext.Session.GetString("Kullanici_Rol");
         return View(new HairstyleRequestModel());
     }
 
     [HttpPost]
     public async Task<IActionResult> Index(HairstyleRequestModel model)
     {
+        ViewData["KullaniciEmail"] = HttpContext.Session.GetString("Kullanici_Email");
+        ViewData["KullaniciAdi"] = HttpContext.Session.GetString("Kullanici_Adi");
+        ViewData["KullaniciRol"] = HttpContext.Session.GetString("Kullanici_Rol");
         if (model.ImageFile == null || string.IsNullOrEmpty(model.TextPrompt))
         {
             ModelState.AddModelError("", "Please upload an image and enter a prompt.");
